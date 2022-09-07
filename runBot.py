@@ -52,13 +52,13 @@ def createRandomTextFromJson(records):
 
     match pickedRecord['type']:
         case 'problem_bike':
-            text = pickedRecord['title'] + ': Bitte hilf mir dabei Problemstellen für den Verkehr in #Würzburg aktuell zu halten. Ist dieses Fahrrad-Problem noch aktuell? Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
+            text = pickedRecord['title'] + ': Bitte hilf mir Problemstellen für den Verkehr in #Würzburg aktuell zu halten. Ist dieses Fahrrad-Problem noch aktuell? Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
         case 'solved_bike':
-            text = pickedRecord['title'] + ': Bitte hilf mir dabei positive Beispiele für die Verkehrswende in #Würzburg aktuell zu halten. Ist diese Stelle für Fahrrader noch immer ein positives Beispiel? Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
+            text = pickedRecord['title'] + ': Bitte hilf mir positive Beispiele für die Verkehrswende in #Würzburg aktuell zu halten. Ist diese Stelle für Fahrrader noch immer ein positives Beispiel? Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
         case 'problem_side_walk':
-            text = pickedRecord['title'] + ': Bitte hilf mir dabei Problemstellen für den Verkehr in #Würzburg aktuell zu halten. Ist dieses Gehweg-Problem noch aktuell?  Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
+            text = pickedRecord['title'] + ': Bitte hilf mir Problemstellen für den Verkehr in #Würzburg aktuell zu halten. Ist dieses Gehweg-Problem noch aktuell?  Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
         case 'solved_side_walk':
-            text = pickedRecord['title'] + ': Bitte hilf mir dabei positive Beispiele für die Verkehrswende in #Würzburg aktuell zu halten. Ist diese Stelle für Fußgänger:innen noch immer ein positives Beispiel? Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
+            text = pickedRecord['title'] + ': Bitte hilf mir positive Beispiele für die Verkehrswende in #Würzburg aktuell zu halten. Ist diese Stelle für Fußgänger:innen noch immer ein positives Beispiel? Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
     return text
 
 # Finaly run the main loop
