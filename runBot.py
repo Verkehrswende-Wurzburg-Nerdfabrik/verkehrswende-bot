@@ -52,38 +52,26 @@ def createRandomTextFromJson(records):
 
     match pickedRecord['type']:
         case 'problem_bike':
-            text = 'Ist dieses Fahrrad-Problem noch aktuell? '+pickedRecord['description'] + ' ' +pickedRecord['url']
+            text = pickedRecord['title'] + ': Bitte hilf mir dabei Problemstellen für den Verkehr in #Würzburg aktuell zu halten. Ist dieses Fahrrad-Problem noch aktuell? Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
         case 'solved_bike':
-            text = 'Diese Problemstelle für Fahrräder wurde als behoben markiert. Wie findest du das? '+pickedRecord['description'] + ' ' +pickedRecord['url']
+            text = pickedRecord['title'] + ': Bitte hilf mir dabei positive Beispiele für die Verkehrswende in #Würzburg aktuell zu halten. Ist diese Stelle für Fahrrader noch immer ein positives Beispiel? Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
         case 'problem_side_walk':
-            text = 'Ist dieses Gehweg-Problem noch aktuell? '+pickedRecord['description'] + ' ' +pickedRecord['url']
+            text = pickedRecord['title'] + ': Bitte hilf mir dabei Problemstellen für den Verkehr in #Würzburg aktuell zu halten. Ist dieses Gehweg-Problem noch aktuell?  Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
         case 'solved_side_walk':
-            text = 'Diese Problemstelle für Gehwege wurde als behoben markiert. Wie findest du das? '+pickedRecord['description'] + ' ' +pickedRecord['url']
-
+            text = pickedRecord['title'] + ': Bitte hilf mir dabei positive Beispiele für die Verkehrswende in #Würzburg aktuell zu halten. Ist diese Stelle für Fußgänger:innen noch immer ein positives Beispiel? Gibt es neue Bilder dieser Stelle? '+pickedRecord['url']
     return text
-
-# Call the API
-response = request()
-
-# Parse the JSON response
-data = json.loads(response.read())
-
-# Use local JSON test data file
-# f = open('lots.json',  encoding='utf-8')
-# data = json.load(f)
-
-# Print lots of texts for debugging purposes
 
 # Finaly run the main loop
 while True:
+    response = request()
+    data = json.loads(response.read())
     text = createRandomTextFromJson(data)
     print("Sending text to Twitter: "+text)
-    #response = tweetText(text)
-    #print(response)
-    oneHour = 1*60*60
-    sleepTimeSeconds = randrange(oneHour*3, oneHour*6)
-    sleepTimeHours = sleepTimeSeconds / 60 / 60
-    print("Sleeping "+str(sleepTimeSeconds)+" seconds ("+str(sleepTimeHours)+" hours) ...");
+    response = tweetText(text)
+    print(response)
+    daysInSeconds = 1*60*60*24*3
+    sleepTimeDays = daysInSeconds / 24 / 60 / 60
+    print("Sleeping "+str(daysInSeconds)+" seconds ("+str(sleepTimeDays)+" days) ...");
     # Do not forget to flush the output buffer and print it on the screen because of sleep
     sys.stdout.flush()
-    time.sleep(sleepTimeSeconds);
+    time.sleep(daysInSeconds);
